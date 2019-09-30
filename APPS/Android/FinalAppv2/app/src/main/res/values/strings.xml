@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FinalAppv2</string>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
+    <string name="bitmapview">Bitmapview</string>
+</resources>
