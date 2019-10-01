@@ -4,10 +4,22 @@ Short overview and discription about this repository. Main story on ...
 
 #### Android application
 In Java works with SDK wersion 28 - Android 9. This application uses tensorflow model to detect objects and allows user to record videos from camera. You can also click on object and it shows all the pictures of the same category objects in frame. Good base for developing visual machine learning solutions. <br>
-Some errors with older Huawei phones. Optimalization posibilities: https://developers.google.com/ml-kit/
+Some errors with older Huawei phones. Optimalization posibilities: https://developers.google.com/ml-kit/ I also share compressed (quantitized) Tensorflow lite model in resources folder. (*ssd_mobilenet_v2_quantized_coco*)
+(ZDJ JAK WYGLADA APKA)
 
 #### IOS application
-need to write it
+need to write it (BEZ ZDJ)
 
 #### ML
-Folder containing code in python for creating special object comparison net. Using keras you can quickly train (with example in file) and deploy ready to use model. (GRAFIKA OBRAZUJACA STRUKTURE SIECI)
+Folder with files for creating special object comparison net, running different nets and collecting data. 
+* **my_net.py** <br>
+Using keras you can quickly create, train and deploy ready to use model of special net. It is developed for comparing the similarity of two pictures. I also share trained model on car pictures. Aproximately 5k images, 85% accuracy, 350 epochs. ![mynet](my_net.png)
+* **data.py** <br>
+Script in python using OpenCV to create set of 2 images either similar or different from video file. All commands in terminal. It needs preprocessed video to pictures - file *process.py* uses Tensorflow model *mask_rcnn_inception_v2_coco*. Shows pictures of desired category objects from one frame and following. User needs to point wich are similar, not matching are created automaticly. First picture below.
+* **webpage** <br>
+Simple webpage that also enables data collection as above file but with progress save. Some improvements can be done. It needs preprocessed video to display pictures - file *process.py*. Webpage creates text file that should look like that 1-2,2-1 it means the same objects are 1 from first picture and 2 from second, 2 from first and 1 from second. Bad matches are created automaticly. Then we can create set of images with *webdecoder.py*. Folder structure without pictures as in repository. Second picture below.
+* **run.py** <br>
+File containing code for running different kinds of neural nets. Mask rcnn object detection, mobilenet_v2 classifier, ssd mobilenet_v2 object detector and Tensorflow Lite model.
+![screen](sc.png)
+
+Icons credits: https://www.flaticon.com/authors/freepik https://www.flaticon.com/authors/pause08 https://www.flaticon.com/authors/smashicons
