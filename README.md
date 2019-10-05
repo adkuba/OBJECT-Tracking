@@ -10,7 +10,9 @@ Some errors with older Huawei phones. Optimalization posibilities: https://devel
 ![android](IMAGES/android.png)
 
 #### IOS application
-need to write it (BEZ ZDJ)
+IOS application. Compiled OpenCV framework with trackers avaiable here https://www.dropbox.com/sh/nmys1vd8euthw4d/AABgf5trqf9Rchl_EU6qjr5ga?dl=0 add it to Frameworks in XCode project settings. You can compile it yourself following tutorial in official page but remember to add tracking package! Framework should be in main project folder (CamTracking2). You can also follow this tutorial https://medium.com/@yiweini/opencv-with-swift-step-by-step-c3cc1d1ee5f1 
+
+Przerobic program tak zeby nie trzeba bylo laczyc sie z urzadzeniem!
 
 #### ML
 Machine learning. Folder with files for creating special object comparison net, running different nets and collecting data. Everything using Keras and Tensorflow. Useful as example to work with.
