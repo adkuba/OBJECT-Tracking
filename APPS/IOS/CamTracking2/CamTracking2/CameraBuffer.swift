@@ -2,14 +2,13 @@
 //  CameraBuffer.swift
 //  CamTracking2
 //
-//  Created by kuba on 07/09/2018.
-//  Copyright © 2018 kuba. All rights reserved.
-//
+//  Created by Jakub Adamski on 07/09/2018.
+//  Copyright © 2018 Jakub Adamski. All rights reserved.
+//  Recording manager
 
 import UIKit
 import AVFoundation
 import Photos
-
 
 protocol CameraBufferDelegate: class {
     func captured(image: UIImage)
@@ -35,7 +34,6 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             let micInput = try? AVCaptureDeviceInput(device: microphone)
             else {return session}
         session.addInput(micInput)
-        
         
         return session
     }()
@@ -68,9 +66,7 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             self.delegate?.captured(image: uiImage)
         }
  
-        
         let writable = canWrite()
-        
         if writable,
             sessionAtSourceTime == nil {
             
@@ -79,9 +75,7 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             videoWriter.startSession(atSourceTime: sessionAtSourceTime!)
         }
         
-        
         if output == videoOutput {
-            
             if trans {
             switch UIDevice.current.orientation {
                 
@@ -137,9 +131,6 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         
     }
-    
-    
-    
    
     var audioDataOutput: AVCaptureAudioDataOutput!
     var sessionAtSourceTime: CMTime!
@@ -150,7 +141,6 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var isRecording = false
     
     func setUpWriter() {
-        
         do {
             outputFileLocation = videoFileLocation()
             videoWriter = try AVAssetWriter(outputURL: outputFileLocation!, fileType: AVFileType.mov)
@@ -183,21 +173,17 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
                 videoWriter.add(audioWriterInput!)
             }
             
-            
             videoWriter.startWriting()
-            
+        
         } catch let error {
             debugPrint(error.localizedDescription)
             
         }
-        
-        
     }
     
     func canWrite() -> Bool {
         return isRecording && videoWriter != nil && videoWriter?.status == .writing
     }
-    
     
     //video file location method
     func videoFileLocation() -> URL {
@@ -253,10 +239,8 @@ class CameraBuffer: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     }
 }
 
-
 extension CAMViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         cameraBuffer.trans = true
     }
 }
-

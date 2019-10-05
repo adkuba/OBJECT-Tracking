@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		8C03397F2142DEA8009321D2 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8C03397E2142DEA8009321D2 /* OpenCVWrapper.mm */; };
 		8C0339822142E397009321D2 /* CameraBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0339812142E397009321D2 /* CameraBuffer.swift */; };
-		8C0DEC0B2348964F00D5447E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD4D7121381D3E00C69860 /* CoreBluetooth.framework */; };
-		8C0DEC1E2348A3EB00D5447E /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0DEC1D2348A3EB00D5447E /* opencv2.framework */; };
-		8C0DEC1F2348A3EB00D5447E /* opencv2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0DEC1D2348A3EB00D5447E /* opencv2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8C47933C2348F6B00042CF04 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD4D7121381D3E00C69860 /* CoreBluetooth.framework */; };
+		8C47933E2348F6B20042CF04 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C47933A2348EF4D0042CF04 /* opencv2.framework */; };
 		8CDD4D4321381A3500C69860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD4D4221381A3500C69860 /* AppDelegate.swift */; };
 		8CDD4D4521381A3500C69860 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD4D4421381A3500C69860 /* ViewController.swift */; };
 		8CDD4D4821381A3500C69860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDD4D4621381A3500C69860 /* Main.storyboard */; };
@@ -40,17 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8C0DEC202348A3EB00D5447E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8C0DEC1F2348A3EB00D5447E /* opencv2.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8CFF98B52144D23400F68477 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,7 +56,7 @@
 		8C03397E2142DEA8009321D2 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = OpenCVWrapper.mm; path = CamTracking2/OpenCVWrapper.mm; sourceTree = "<group>"; };
 		8C0339802142DF1C009321D2 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = CamTracking2/PrefixHeader.pch; sourceTree = "<group>"; };
 		8C0339812142E397009321D2 /* CameraBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraBuffer.swift; sourceTree = "<group>"; };
-		8C0DEC1D2348A3EB00D5447E /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		8C47933A2348EF4D0042CF04 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		8CDD4D3F21381A3500C69860 /* CamTracking2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamTracking2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDD4D4221381A3500C69860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CDD4D4421381A3500C69860 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,8 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C0DEC1E2348A3EB00D5447E /* opencv2.framework in Frameworks */,
-				8C0DEC0B2348964F00D5447E /* CoreBluetooth.framework in Frameworks */,
+				8C47933E2348F6B20042CF04 /* opencv2.framework in Frameworks */,
+				8C47933C2348F6B00042CF04 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +162,7 @@
 		8CDD4D7021381D3D00C69860 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C0DEC1D2348A3EB00D5447E /* opencv2.framework */,
+				8C47933A2348EF4D0042CF04 /* opencv2.framework */,
 				8CDD4D7121381D3E00C69860 /* CoreBluetooth.framework */,
 			);
 			name = Frameworks;
@@ -191,7 +179,6 @@
 				8CDD4D3C21381A3500C69860 /* Frameworks */,
 				8CDD4D3D21381A3500C69860 /* Resources */,
 				8CFF98B52144D23400F68477 /* CopyFiles */,
-				8C0DEC202348A3EB00D5447E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,14 +237,16 @@
 				TargetAttributes = {
 					8CDD4D3E21381A3500C69860 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1100;
 					};
 					8CDD4D5221381A3800C69860 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1100;
 						TestTargetID = 8CDD4D3E21381A3500C69860;
 					};
 					8CDD4D5D21381A3800C69860 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1100;
 						TestTargetID = 8CDD4D3E21381A3500C69860;
 					};
 				};
@@ -492,6 +481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FKWUVD2D2R;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -500,15 +490,17 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CamTracking2/PrefixHeader.pch";
 				INFOPLIST_FILE = CamTracking2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kuba.CamTracking2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CamTracking2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -518,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FKWUVD2D2R;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -526,14 +519,16 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CamTracking2/PrefixHeader.pch";
 				INFOPLIST_FILE = CamTracking2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kuba.CamTracking2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CamTracking2-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -553,7 +548,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kuba.CamTracking2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CamTracking2.app/CamTracking2";
 			};
@@ -574,7 +569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kuba.CamTracking2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CamTracking2.app/CamTracking2";
 			};
@@ -594,7 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kuba.CamTracking2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CamTracking2;
 			};
@@ -614,7 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kuba.CamTracking2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CamTracking2;
 			};

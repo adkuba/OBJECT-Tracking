@@ -2,9 +2,9 @@
 //  OpenCVWrapper.h
 //  CamTracking2
 //
-//  Created by kuba on 07/09/2018.
-//  Copyright © 2018 kuba. All rights reserved.
-//
+//  Created by Jakub Adamski on 07/09/2018.
+//  Copyright © 2018 Jakub Adamski. All rights reserved.
+//  connection swift - cpp
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

@@ -2,69 +2,60 @@
 //  CAMViewController.swift
 //  CamTracking2
 //
-//  Created by kuba on 31/08/2018.
-//  Copyright © 2018 kuba. All rights reserved.
-//
+//  Created by Jakub Adamski on 31/08/2018.
+//  Copyright © 2018 Jakub Adamski. All rights reserved.
+//  Main screen with tracker
 
 import UIKit
 import CoreBluetooth
 import AVFoundation
 import Photos
 
+//special characteristics for my Bluetooth device
 let BService = CBUUID(string: "0xFFE0")
 let BCharacteristic = CBUUID(string: "0xFFE1")
-
 
 class CAMViewController: UIViewController , CameraBufferDelegate {
     
     var cameraBuffer:CameraBuffer!
-    
     var centralManager: CBCentralManager?
-    var devicen = ""
-    var device: CBPeripheral?
+    var devicen = "" //device name set by ViewController
+    var device: CBPeripheral? //Bluetooth device
     var devicechara: CBCharacteristic?
-    var timer = Timer()
+    var timer = Timer() //timer for battery checking via Bluetooth
     var frame: UIImage?
     let overlay = UIView()
     var lastPoint = CGPoint.zero
-    let opencvWrapper = OpenCVWrapper();
-
+    let opencvWrapper = OpenCVWrapper(); //opencv include
 
     @IBOutlet weak var camView: UIImageView!
     @IBOutlet weak var name: UIBarButtonItem!
     @IBOutlet weak var state: UIBarButtonItem!
     @IBOutlet weak var message: UIBarButtonItem!
     
-    
-    
-    
+    //Info popup
     @IBAction func infob(_ sender: UIButton) {
-        let alertinf = UIAlertController(title: "App description", message: "Ładny opis tego ekranu", preferredStyle: .alert)
-        
+        let alertinf = UIAlertController(title: "App description", message: "TODO", preferredStyle: .alert)
         alertinf.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
         self.present(alertinf, animated: true)
     }
     
-    
+    //function sends simple message requesting baterry information
     @objc func update() {
-        
         device?.writeValue("p".data(using: .utf8)!, for: devicechara!, type: CBCharacteristicWriteType(rawValue: 1)!)
     }
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         name.title = devicen
         state.title = " - "
-        
         let centralQueue: DispatchQueue = DispatchQueue(label: "com.iosbrain.centralQueueName", attributes: .concurrent)
+        
+        //Bluetooth manager and timer manager
         centralManager = CBCentralManager(delegate: self, queue: centralQueue)
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(update), userInfo: nil, repeats: true)
-        
       
+        //Video recording code in CameraBuffer
         cameraBuffer = CameraBuffer()
         cameraBuffer.delegate = self
         Recstate.setTitle("Start rec", for: .normal)
@@ -74,38 +65,18 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
         overlay.isHidden = true
         self.camView.addSubview(overlay)
         
+        //adding back button
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(CAMViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CAMViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         newBackButton.tintColor = UIColor.white
-        
-        // Find size for blur effect.
-        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-        let boundsN = self.navigationController?.navigationBar.bounds.insetBy(dx: 0, dy: -(statusBarHeight)).offsetBy(dx: 0, dy: -(statusBarHeight))
-        // Create blur effect.
-        let visualEffectViewN = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        visualEffectViewN.frame = boundsN!
-        // Set navigation bar up.
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.addSubview(visualEffectViewN)
-        self.navigationController?.navigationBar.sendSubview(toBack: visualEffectViewN)
-        
-        let boundsT = self.navigationController?.toolbar.bounds
-        let visualEffectViewT = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        visualEffectViewT.frame = boundsT!
-        self.navigationController?.toolbar.isTranslucent = true
-        self.navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .bottom, barMetrics: .default)
-        self.navigationController?.toolbar.addSubview(visualEffectViewT)
-        self.navigationController?.toolbar.sendSubview(toBack: visualEffectViewT)
-        
+ 
         let height: CGFloat = 40 //whatever height you want to add to the existing height
         let bounds = self.navigationController!.navigationBar.bounds
         self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
-    
     }
     
-    
+    //reseting tracker
     @IBAction func TReset(_ sender: UIBarButtonItem) {
     readytotrack = false
     trackerreset = true
@@ -114,9 +85,8 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
     
     @IBOutlet weak var Recstate: UIButton!
     
+    //recording and saving video
     @IBAction func Rec(_ sender: UIButton) {
-        
-    
         if cameraBuffer.isRecording {
             cameraBuffer.stop()
             Recstate.setTitle("Start rec", for: .normal)
@@ -156,50 +126,53 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
         }
  
     }
-
     
-    var miejsce: Int32 = 50
-    var stan = true
+    //tracker manager
+    var place: Int32 = 50
+    var stateT = true
     var readytotrack = false
-    var licznik = 1
+    var counter = 1
     var move = false
     func captured(image: UIImage) {
-        if licznik == 1 {
+        //sending first image only to get size information
+        if counter == 1 {
             opencvWrapper.start(image)
-            licznik += 1
+            counter += 1
         }
+        //init the tracker
         if touchstate {
             camView.image = opencvWrapper.inittracker(image)
             touchstate = false
             readytotrack = true
         }
+        //tracking function miejsce sends information where tracked object is 0 - left 50 - center 100 - right
         if touchstate == false && readytotrack == false {
             camView.image = image
         }
-        
         if readytotrack {
-            if stan {
-                stan = false
+            if stateT {
+                stateT = false
                 DispatchQueue.main.async {
                     self.camView.image =  self.opencvWrapper.trackerstart(image)
-                    self.miejsce = self.opencvWrapper.miejsce()
-                    self.stan = true
+                    self.place = self.opencvWrapper.miejsce()
+                    self.stateT = true
                 }
             }
             ruch()
         }
     }
     
- 
+    //sending special information to my device about how to move motor
     func ruch () {
-            if miejsce < 40 && move == false {
-                moveleft()
-            }
+        if place < 40 && move == false {
+            moveleft()
+        }
     
-            if miejsce > 60 && move == false {
-                    moveright()
-            }
-        if miejsce >= 40 && miejsce <= 60 && move {
+        if place > 60 && move == false {
+            moveright()
+        }
+        
+        if place >= 40 && place <= 60 && move {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                 self.device?.writeValue("b".data(using: .utf8)!, for:
                     self.devicechara!, type: CBCharacteristicWriteType(rawValue: 1)!)
@@ -222,16 +195,17 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
         }
     }
     
-    
-   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    if trackerreset {
-        //Save original tap Point
-        if let touch = touches.first {
-            lastPoint = touch.location(in: self.camView)
+    //starting to draw rectangle on screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if trackerreset {
+            //Save original tap Point
+            if let touch = touches.first {
+                lastPoint = touch.location(in: self.camView)
+            }
         }
     }
-    }
     
+    //drawing...
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Get the current known point and redraw
         if trackerreset {
@@ -244,21 +218,21 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
     var rect: CGRect?
     func reDrawSelectionArea(fromPoint: CGPoint, toPoint: CGPoint) {
         overlay.isHidden = false
-        
         //Calculate rect from the original point and last known point
         let rectwidth = toPoint.x - fromPoint.x
         let rectheight = toPoint.y - fromPoint.y
         rect = CGRect(x: fromPoint.x, y: fromPoint.y, width: rectwidth, height: rectheight)
-        
         overlay.frame = rect!
     }
     
+    //end of drawing - start tracker
     var touchstate = false
     var trackerreset = true
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if trackerreset {
         overlay.isHidden = true
             
+            //coordinates
             let px = (rect?.minX)! * 100 / camView.bounds.width
             let py = (rect?.minY)! * 100 / camView.bounds.height
             let pw = (rect?.width)! * 100 / camView.bounds.width
@@ -274,11 +248,12 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
         }
     }
     
-    
-    
+    //back button
     @objc func back(sender: UIBarButtonItem) {
-        
-        centralManager?.cancelPeripheralConnection(device!)
+        //skip disconnection if none was created
+        if (device != nil){
+            centralManager?.cancelPeripheralConnection(device!)
+        }
         
         for subview in (navigationController?.navigationBar.subviews)! {
             if subview is UIVisualEffectView {
@@ -299,22 +274,19 @@ class CAMViewController: UIViewController , CameraBufferDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
-
-
 extension CAMViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
-    
+    //scaning
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if (central.state == .poweredOn){
             centralManager?.scanForPeripherals(withServices: nil, options: nil)
         }
     }
     
+    //trying to connect with device
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
+    
         if peripheral.name == devicen {
             device = peripheral
             device?.delegate = self
@@ -323,21 +295,20 @@ extension CAMViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
         }
     }
 
+    //checking if connection is established
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
         DispatchQueue.main.async {
             self.state.title = "OK.1"
         }
         device?.discoverServices ([BService])
     }
     
-    
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        //wyswietlac error że się rozłączyło
+        //error notification
     }
     
+    //checking if I conneted to the right spec device part 1
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-
         for service in peripheral.services! {
             if service.uuid == BService {
                 DispatchQueue.main.async {
@@ -348,6 +319,7 @@ extension CAMViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
         }
     }
     
+    //checking if I conneted to the right spec device part 2
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         for characteristic in service.characteristics! {
             if characteristic.uuid == BCharacteristic {
@@ -360,6 +332,7 @@ extension CAMViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
         }
     }
     
+    //special functions to check battery state every 3 seconds
     func percent(chara: CBCharacteristic) -> String {
         let data = chara.value!
         let value = String(decoding: data, as: UTF8.self)
@@ -368,7 +341,6 @@ extension CAMViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
         let result = (Double(value)!-min)/max * 100
         return "\(String(format: "%.0f", result)) %"
     }
-    
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if characteristic.uuid == BCharacteristic {
             DispatchQueue.main.async {
@@ -376,5 +348,4 @@ extension CAMViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
             }
         }
     }
- 
 }

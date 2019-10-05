@@ -2,9 +2,9 @@
 //  OpenCVWrapper.m
 //  CamTracking2
 //
-//  Created by kuba on 07/09/2018.
-//  Copyright © 2018 kuba. All rights reserved.
-//
+//  Created by Jakub Adamski on 07/09/2018.
+//  Copyright © 2018 Jakub Adamski. All rights reserved.
+//  OpenCV functions C++
 
 #import "OpenCVWrapper.h"
 #import <opencv2/opencv.hpp>
@@ -12,7 +12,6 @@
 #import <opencv2/imgcodecs/ios.h>
 #import <opencv2/tracking.hpp>
 #import <opencv2/imgproc/imgproc.hpp>
-
 
 using namespace cv;
 using namespace std;
@@ -37,7 +36,6 @@ void recscale () {
 }
 
 + (NSString *)openCVVersionString {
-    
     return [NSString stringWithFormat:@"OpenCV Version %s",  CV_VERSION];
 }
 
@@ -88,25 +86,21 @@ void recscale () {
     Mat res_frame; resize(frame, res_frame, cv::Size(w, h));
     cvtColor(res_frame, res_frame, CV_BGR2GRAY);
     // Define initial bounding box
-    
     // Uncomment the line below to select a different bounding box
     // bbox = selectROI(frame, false);
     // Display bounding box.
+    // Update the tracking result
+    bool ok = tracker->update(res_frame, bbox);
+    procent = (bbox.x + bbox.width/2) *100 / w;
+    recscale();
     
-        // Update the tracking result
-        bool ok = tracker->update(res_frame, bbox);
-        procent = (bbox.x + bbox.width/2) *100 / w;
-        recscale();
-    
-        if (ok)
-        {
-            // Tracking success : Draw the tracked object
-            rectangle(frame, bbox, Scalar( 255, 0, 0 ), 2, 1 );
-        }
-        else {
-            procent = 50;
-        }
-    
+    if (ok){
+        // Tracking success : Draw the tracked object
+        rectangle(frame, bbox, Scalar( 255, 0, 0 ), 2, 1 );
+    }
+    else {
+        procent = 50;
+    }
     
     return MatToUIImage(frame);
 }

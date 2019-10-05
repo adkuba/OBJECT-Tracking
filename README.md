@@ -3,14 +3,14 @@
 Short overview and discription about this repository. Main story on ...
 
 #### Android application
-In Java works with SDK wersion 28 - Android 9. This application uses tensorflow model to detect objects and allows user to record videos from camera. You can also click on object and it shows all the pictures of the same category objects in frame. Good base for developing visual machine learning solutions. <br>
-Some errors with older Huawei phones. Optimalization posibilities: https://developers.google.com/ml-kit/ I also share compressed (quantitized) Tensorflow lite model in resources folder. (*ssd_mobilenet_v2_quantized_coco*)
+In Java works with SDK wersion 28 - Android 9. Application uses tensorflow model to detect objects and allows user to record videos from camera. You can also click on object and it shows all the pictures of the same category objects in frame. Good base for developing visual machine learning solutions. <br>
+Some errors with older Huawei phones. Optimalization posibilities: https://developers.google.com/ml-kit/ I also share compressed (quantitized) Tensorflow lite model in application resources folder. (*ssd_mobilenet_v2_quantized_coco*)
 
 
 ![android](IMAGES/android.png)
 
 #### IOS application
-IOS application. Compiled OpenCV framework with trackers avaiable here https://www.dropbox.com/sh/nmys1vd8euthw4d/AABgf5trqf9Rchl_EU6qjr5ga?dl=0 add it to Frameworks in XCode project settings. You can compile it yourself following tutorial in official page but remember to add tracking package! Framework should be in main project folder (CamTracking2). You can also follow this tutorial https://medium.com/@yiweini/opencv-with-swift-step-by-step-c3cc1d1ee5f1 
+IOS application. Compiled OpenCV 4.0.0 framework with trackers avaiable here (https://www.dropbox.com/s/0iqwqfjz95ehut5/opencv2.framework.zip?dl=0) add it to Frameworks in XCode project settings. You can compile framework yourself following tutorial in official page but remember to add tracking package! Framework should be in main project folder (CamTracking2), can be changed in build settings. You can also follow this tutorial https://medium.com/@yiweini/opencv-with-swift-step-by-step-c3cc1d1ee5f1 Aplication allows to test OpenCV trackers, connect to Bluetooth devices and record videos. No suport for Vision tracking so far.
 
 Przerobic program tak zeby nie trzeba bylo laczyc sie z urzadzeniem!
 
