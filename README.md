@@ -39,6 +39,6 @@ Tutaj bede wklejal wszystkie linki zamiast do pliku.
 Simple device to use with mobile phones. All parts were designed in Inventor Proffesional and then 3D printed. Lower part has special thread used in almost all photography devices. We can easily mount it to, for example tripod. Above, inside the device, is place for all the electronics. I choosed Arduino Nano, Bluetooth for connection and stepper motor. The last one was a mistake. Much better would be the brushless motor used widely in camera gimbals. Upper part has a simple mount for smartphones, wich works with almost all models.
 
 
-![hardware](IMAGES/hardware.gif)
+![hardware](IMAGES/hardware.jpg)
 
 Icons credits: https://www.flaticon.com/authors/freepik https://www.flaticon.com/authors/pause08 https://www.flaticon.com/authors/smashicons
