@@ -30,9 +30,6 @@ File containing code for running different kinds of neural nets. Mask rcnn objec
 
 ![screen](IMAGES/sc.png)
 
-#### Links
-
-Tutaj bede wklejal wszystkie linki zamiast do pliku.
 
 #### Hardware
 
