@@ -10,26 +10,28 @@ public class RandomMoves : MonoBehaviour
 
     void Start()
     {
-        newPos = transform.position;
+        newPos = transform.localPosition;
         speed = Random.Range(3f, 6f);
     }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, newPos) < 0.001f)
+
+        if (Vector3.Distance(transform.localPosition, newPos) < 0.001f)
         {
             genNewPos();
         }
         else
         {
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, newPos, step);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, newPos, step);
         }
-        if (transform.position.x >= -2 && transform.position.x <= 2 && transform.position.z >= -2 && transform.position.z <= 2)
+        if (transform.localPosition.x >= -2 && transform.localPosition.x <= 2 && transform.localPosition.z >= -2 && transform.localPosition.z <= 2)
         {
             //odbijamy od kamery
             newPos = lastPos;
         }
+
     }
 
     void genNewPos()
@@ -37,7 +39,8 @@ public class RandomMoves : MonoBehaviour
         float x = Random.Range(-25f, 25f);
         float z = Random.Range(-25f, 25f);
         lastPos = newPos;
-        newPos = new Vector3(x, transform.position.y, z);
+        newPos = new Vector3(x, transform.localPosition.y, z);
         speed = Random.Range(3f, 6f);
     }
+
 }
