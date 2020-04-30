@@ -1,0 +1,33 @@
+default:
+    trainer: ppo
+    batch_size: 64
+    beta: 1.0e-2
+    buffer_size: 5120
+    epsilon: 0.2
+    hidden_units: 512
+    lambd: 0.95
+    learning_rate: 3.0e-4
+    learning_rate_schedule: linear
+    max_steps: 1.0e7
+    normalize: false
+    num_epoch: 3
+    num_layers: 6
+    time_horizon: 128
+    summary_freq: 20000
+    use_recurrent: true
+    memory_size: 4096
+    sequence_length: 64
+    vis_encode_type: nature_cnn
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+        curiosity:
+            strength: 0.05
+            gamma: 0.99
+            encoding_size: 256
+        gail:
+            strength: 0.2
+            gamma: 0.99
+            encoding_size: 256
+            demo_path: MyDemos/Tracking.demo
