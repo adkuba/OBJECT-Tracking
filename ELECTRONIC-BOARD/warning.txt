@@ -1,0 +1,2 @@
+You need to upload bootloader to the board first.
+I'm using SiliconLabs EFR32MG21A010F1024IM32 chip.
