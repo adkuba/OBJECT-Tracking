@@ -51,7 +51,7 @@ Simple device to use with mobile phones. All parts were designed in Inventor Pro
 
 #### Electronic board v2
 
-Using Silicon Labs chip I developed special electronic board that uses Bluetooth. The goal was to implement AoA in Bluetooth 5.1, but unfortunatelly I wasn't able to achieve that. However I learned how to project board using Eagle from Autodesk and low level programing in Silicon Labs and C++.
+Using Silicon Labs chip I developed special electronic board that uses Bluetooth. The goal was to implement AoA in Bluetooth 5.1, but unfortunatelly I wasn't able to achieve that. However I learned how to project board using Eagle from Autodesk and low level programing in Silicon Labs and C++. Read board.pdf to learn more about the idea.
 
 ![my-chip-board](IMAGES/chip-low.png)
 ![my-antenna-board](IMAGES/antenna-low.png)
