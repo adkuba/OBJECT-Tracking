@@ -10,7 +10,7 @@
 
 #### About 
 What have I learned?
-* How to use **machine learning** to detect, track objects. How to build and train your own machine learning model. (**Python, Tensorflow**)
+* How to use **machine learning** to detect, track objects. How to build and train your own machine learning model and evolutional model. (**Python, Tensorflow, Unity**)
 * Building my own **Android** application that uses machine learning and camera. (**Java, Android Studio**)
 * How to build simple **IOS** application that uses built in and external machine learning models, bluetooth and camera. (**Swift, XCode**)
 * How to develop from the ground up, special **electronic board** that uses bluetooth. (**Silicon Labs, C++**)
@@ -53,8 +53,8 @@ Simple device to use with mobile phones. All parts were designed in Inventor Pro
 
 Using Silicon Labs chip I developed special electronic board that uses Bluetooth. The goal was to implement AoA in Bluetooth 5.1, but unfortunatelly I wasn't able to achieve that. However I learned how to project board using Eagle from Autodesk and low level programing in Silicon Labs and C++.
 
-![my-chip-board](IMAGES/chip.png)
-![my-antenna-board](IMAGES/antenna.png)
-![ready-board](IMAGES/ready.jpg)
+![my-chip-board](IMAGES/chip.png | height=450)
+![my-antenna-board](IMAGES/antenna.png | height=450)
+![ready-board](IMAGES/ready.jpg | height=450)
 
 Icons credits: https://www.flaticon.com/authors/freepik https://www.flaticon.com/authors/pause08 https://www.flaticon.com/authors/smashicons
