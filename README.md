@@ -1,5 +1,19 @@
 # OBJECTTracking
 
+### Table of Contents
+1. [About](#about)
+2. [Android application](#android-application)
+3. [IOS Application](#ios-application)
+4. [Machine learning](#ml)
+5. [Hardware](#hardware-v1)
+6. [Electronic board](#electronic-board-v2)
+
+#### About 
+What have I learned?
+* How to use **machine learning** to detect, track objects. How to build and train your own machine learning model. (**Python, Tensorflow**)
+* Building my own **Android** application that uses machine learning and camera. (**Java, Android Studio**)
+* How to build simple **IOS** application that uses built in and external machine learning models, bluetooth and camera. (**Swift, XCode**)
+* How to develop from the ground up, special **electronic board** that uses bluetooth. (**Silicon Labs, C++**)
 
 #### Android application
 In Java works with SDK wersion 28 - Android 9. Application uses tensorflow model to detect objects and allows user to record videos from camera. You can also click on object and it shows all the pictures of the same category objects in frame. Good base for developing visual machine learning solutions. <br>
@@ -29,11 +43,18 @@ File containing code for running different kinds of neural nets. Mask rcnn objec
 ![screen](IMAGES/sc.png)
 
 
-#### Hardware
+#### Hardware v1
 
 Simple device to use with mobile phones. All parts were designed in Inventor Proffesional and then 3D printed. Lower part has special thread used in almost all photography devices. We can easily mount it to, for example tripod. Above, inside the device, is place for all the electronics. I choosed Arduino Nano, Bluetooth for connection and stepper motor. The last one was a mistake. Much better would be the brushless motor used widely in camera gimbals. Upper part has a simple mount for smartphones, wich works with almost all models.
 
-
 ![hardware](IMAGES/hardware.jpg)
+
+#### Electronic board v2
+
+Using Silicon Labs chip I developed special electronic board that uses Bluetooth. The goal was to implement AoA in Bluetooth 5.1, but unfortunatelly I wasn't able to achieve that. However I learned how to project board using Eagle from Autodesk and low level programing in Silicon Labs and C++.
+
+![my-chip-board](IMAGES/chip.png)
+![my-antenna-board](IMAGES/antenna.png)
+![ready-board](IMAGES/ready.jpg)
 
 Icons credits: https://www.flaticon.com/authors/freepik https://www.flaticon.com/authors/pause08 https://www.flaticon.com/authors/smashicons
