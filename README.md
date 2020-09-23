@@ -16,13 +16,13 @@
 
 #### [Android application](APPS/Android/)
 In Java works with SDK wersion 28 - Android 9. Application uses tensorflow model to detect objects and allows user to record videos from the camera. You can also click on object and it shows all the pictures of the same category objects in frame. Good base for developing visual machine learning solutions. <br>
-Some errors with older Huawei phones. Optimalization posibilities: https://developers.google.com/ml-kit/ I also share compressed (quantitized) Tensorflow lite model in application resources folder. (*ssd_mobilenet_v2_quantized_coco*)
+Some errors with older Huawei phones. Optimalization [posibilities](https://developers.google.com/ml-kit/). I also share compressed (quantitized) Tensorflow lite model in application resources folder. (*ssd_mobilenet_v2_quantized_coco*)
 
 
 ![android](IMAGES/android.png)
 
 #### [IOS application](APPS/IOS/)
-IOS application. Compiled OpenCV 4.0.0 framework with trackers avaiable here (https://www.dropbox.com/s/0iqwqfjz95ehut5/opencv2.framework.zip?dl=0) add it to Frameworks in XCode project settings. You can compile framework yourself following tutorial in official page but remember to add tracking package! Framework should be in main project folder (CamTracking2), can be changed in build settings. You can also follow this tutorial https://medium.com/@yiweini/opencv-with-swift-step-by-step-c3cc1d1ee5f1 Aplication allows to test OpenCV trackers, connect to Bluetooth devices and record videos. No suport for Vision tracking so far.
+IOS application. Compiled OpenCV 4.0.0 framework with trackers avaiable [here](https://www.dropbox.com/s/0iqwqfjz95ehut5/opencv2.framework.zip?dl=0) add it to Frameworks in XCode project settings. You can compile framework yourself following tutorial in official page but remember to add tracking package! Framework should be in main project folder (CamTracking2), can be changed in build settings. You can also follow this [tutorial](https://medium.com/@yiweini/opencv-with-swift-step-by-step-c3cc1d1ee5f1) Aplication allows to test OpenCV trackers, connect to Bluetooth devices and record videos. No suport for Vision tracking so far.
 
 
 #### [ML](ML/)
