@@ -1,7 +1,7 @@
 # OBJECTTracking
 
 ### Table of Contents
-1. [What I've learned?](#what-I've-learned?)
+1. [What I've learned?](#what-Ive-learned)
 2. [Android application](#android-application)
 3. [IOS Application](#ios-application)
 4. [Machine learning](#ml)
@@ -31,11 +31,11 @@ Machine learning. Folder with files for creating special object comparison net, 
 Using keras you can quickly create, train and deploy ready to use model of special net. It is developed for comparing the similarity of two pictures. I also share trained model on car pictures. Aproximately 5k images, 85% accuracy, 350 epochs. 
 
 ![mynet](IMAGES/my_net.png)
-* **data.py** <br>
-Script in python using OpenCV to create set of 2 images either similar or different from video file. All commands in terminal. It needs preprocessed video to display pictures - file *process.py* uses Tensorflow model *mask_rcnn_inception_v2_coco*. Shows pictures of desired category objects from one frame and next. User needs to point which are similar, sets are created automaticly. [Screenshot](#screen) - second picture.
+* **[data.py](ML/data.py)** <br>
+Script in python using OpenCV to create set of 2 images either similar or different from video file. All commands in terminal. It needs preprocessed video to display pictures - file *process.py* uses Tensorflow model *mask_rcnn_inception_v2_coco*. Shows pictures of desired category objects from one frame and next. User needs to point which are similar, sets are created automaticly. Screenshot below - second picture.
 * **[webpage](ML/webpage/)** <br>
-Simple webpage that enables data collection similar to data.py but with progress save. Some improvements can be done. It needs preprocessed video to display pictures - file *process.py*. Webpage creates text file that should look like that 1-2,2-1 it means the same objects are 1 from first picture and 2 from second, 2 from first and 1 from second. Bad matches are created automaticly. Then we can create set of images with *webdecoder.py*. Folder structure without pictures as in repository. [Screenshot](#screen) - first picture.
-* **run.py** <br>
+Simple webpage that enables data collection similar to data.py but with progress save. Some improvements can be done. It needs preprocessed video to display pictures - file *process.py*. Webpage creates text file that should look like that 1-2,2-1 it means the same objects are 1 from first picture and 2 from second, 2 from first and 1 from second. Bad matches are created automaticly. Then we can create set of images with *webdecoder.py*. Folder structure without pictures as in repository. Screenshot below - first picture.
+* **[run.py](ML/run.py)** <br>
 File containing code for running different kinds of neural nets. Mask rcnn object detection, mobilenet_v2 classifier, ssd mobilenet_v2 object detector and Tensorflow Lite model.
 
 
@@ -56,4 +56,7 @@ Using Silicon Labs chip I developed special electronic board that uses Bluetooth
 ![my-antenna-board](IMAGES/antenna-low.png)
 ![ready-board](IMAGES/ready-low.jpg)
 
-Icons credits: https://www.flaticon.com/authors/freepik https://www.flaticon.com/authors/pause08 https://www.flaticon.com/authors/smashicons
+Icons credits: 
+[link1](https://www.flaticon.com/authors/freepik) 
+[link2](https://www.flaticon.com/authors/pause08) 
+[link3](https://www.flaticon.com/authors/smashicons)
